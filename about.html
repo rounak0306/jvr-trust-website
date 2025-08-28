@@ -12,33 +12,100 @@
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;!doctype html&gt;</p>
 <p class="p1">&lt;html lang="en"&gt;</p>
 <p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;About - JVR Trust&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="stylesheet" href="style.css"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="stylesheet" href="style.css" /&gt;</p>
 <p class="p1">&lt;/head&gt;</p>
 <p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;header&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;About JVR Trust&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;header class="site-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="header-top"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;img src="images/logo.png" alt="JVR Trust logo" class="logo" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1 class="site-title"&gt;JVR Trust&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nav-toggle" id="navToggleAbout" aria-label="Open navigation"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>☰</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav class="main-nav" id="mainNavAbout"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="index.html"&gt;Home&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="about.html"&gt;About&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="about.html" class="active"&gt;About&lt;/a&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="courses.html"&gt;Courses&lt;/a&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="contact.html"&gt;Contact&lt;/a&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
 <p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;section&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Who We Are&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;JVR Trust is committed to providing accessible and quality education in rural Bihar. Our trust has taken the initiative to establish institutions in fields like paramedical sciences, pharmacy, nursing, polytechnic, ITI, and teacher education.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="about-intro"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Who We Are&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>JVR Trust is dedicated to transforming lives through inclusive, high-quality education. Founded with a mission to expand access in underserved regions, the trust establishes and manages professional colleges and vocational centres across allied health, engineering, teacher education and business studies. We combine practical training, industry partnerships and community outreach to build career pathways for students. With a focus on ethics, excellence and employability, JVR Trust supports scholarships, modern labs, experienced faculty and continuous improvement to ensure learners become skilled contributors to society and the economy.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
 <p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="trustees"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Our Trustees&lt;/h2&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="slider" id="trusteeSlider" data-type="trustees"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="slider-btn prev" data-target="trusteeSlider" aria-label="Previous"&gt;‹&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="slides"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Trustee 1 - Main --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;img src="images/trustee1.jpg" alt="Kumar Rounak" class="slide-photo" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="slide-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;img src="images/logo.png" alt="JVR logo" class="card-logo" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3&gt;Kumar Rounak&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;&lt;em&gt;Engineer &amp;amp; Social Worker&lt;/em&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Kumar Rounak is the driving force behind JVR Trust. An accomplished engineer and passionate social worker, he has dedicated his career to combining technical expertise with a deep commitment to community welfare. His vision is to bridge the gap between modern education and grassroots development by creating opportunities for students in both urban and rural areas. Rounak believes in education as a tool of empowerment and actively leads initiatives for affordable learning, skill development, and social upliftment, inspiring young people to take part in building a stronger, self-reliant society.</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Trustee 2 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;img src="images/trustee2.jpg" alt="Vijaya Singh" class="slide-photo" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="slide-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;img src="images/logo.png" alt="JVR logo" class="card-logo" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3&gt;Vijaya Singh&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;&lt;em&gt;Politician &amp;amp; Social Worker&lt;/em&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Vijaya Singh plays a vital role in connecting JVR Trust with communities and public initiatives. As a respected politician and social worker, she advocates for policies that make education accessible to all. Her focus lies in empowering marginalized groups and promoting women’s education. Through her leadership, the trust is able to extend its reach, support government collaborations, and provide meaningful social programs that address the real needs of society.</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Trustee 3 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;img src="images/trustee3.jpg" alt="Raj Kumar Singh" class="slide-photo" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="slide-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;img src="images/logo.png" alt="JVR logo" class="card-logo" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3&gt;Raj Kumar Singh&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;&lt;em&gt;Businessman &amp;amp; Social Worker&lt;/em&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Raj Kumar Singh brings his entrepreneurial expertise and commitment to social causes into the trust’s mission. As a successful businessman, he ensures effective resource management and sustainability for JVR Trust projects. His strong belief in corporate social responsibility drives initiatives that create employment opportunities for students. Raj Kumar Singh focuses on bridging industry with education, helping graduates transition smoothly into professional careers while continuing to support community development.</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="slider-btn next" data-target="trusteeSlider" aria-label="Next"&gt;›&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="dots" aria-hidden="true"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;footer class="site-footer"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;&amp;copy; 2025 JVR Trust | All Rights Reserved&lt;/p&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="script.js"&gt;&lt;/script&gt;</p>
 <p class="p1">&lt;/body&gt;</p>
 <p class="p1">&lt;/html&gt;</p>
 </body>

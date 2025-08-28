@@ -12,40 +12,69 @@
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;!doctype html&gt;</p>
 <p class="p1">&lt;html lang="en"&gt;</p>
 <p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Courses - JVR Trust&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="stylesheet" href="style.css"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="stylesheet" href="style.css" /&gt;</p>
 <p class="p1">&lt;/head&gt;</p>
 <p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;header&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Our Courses&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;header class="site-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="header-top"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;img src="images/logo.png" alt="JVR Trust logo" class="logo" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1 class="site-title"&gt;JVR Trust&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nav-toggle" id="navToggleCourses" aria-label="Open navigation"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>☰</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav class="main-nav" id="mainNavCourses"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="index.html"&gt;Home&lt;/a&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="about.html"&gt;About&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="courses.html"&gt;Courses&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="courses.html" class="active"&gt;Courses&lt;/a&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;a href="contact.html"&gt;Contact&lt;/a&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
 <p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;section&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Programs Offered&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Paramedical College&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Pharmacy (D.Pharm + B.Pharm)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Nursing (B.Sc. Nursing)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;B.Ed. &amp; D.El.Ed.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Polytechnic (Diploma Engineering)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;ITI (Multi-trade)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="programs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Programs Offered&lt;/h2&gt;</p>
 <p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="program-intro"&gt;We offer a broad range of programs from vocational trades to professional degrees. Swipe or use the arrows to browse details. Each program focuses on practical skill-building, industry exposure and employability.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="slider" id="coursesSlider" data-type="courses"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="slider-btn prev" data-target="coursesSlider" aria-label="Previous"&gt;‹&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="slides"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;Paramedical College&lt;/h3&gt;&lt;p&gt;Diploma and certificate programs training allied health professionals (Lab technicians, Radiography, OT technicians). Emphasis on clinical practice, internships and hospital partnerships.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;Pharmacy (D.Pharm + B.Pharm)&lt;/h3&gt;&lt;p&gt;Industry-oriented pharmacy programs covering pharmacology, pharmaceutics and quality control. Modern labs and industrial training prepare graduates for careers in pharmaceutical manufacturing and community pharmacy.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;Nursing (B.Sc. Nursing)&lt;/h3&gt;&lt;p&gt;Comprehensive nursing education combining theory with clinical rotations in hospitals and primary health centres. Focus on patient care, community health and leadership in nursing practice.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;B.Ed. &amp;amp; D.El.Ed.&lt;/h3&gt;&lt;p&gt;Teacher education programs preparing skilled educators for school levels. Curriculum includes pedagogy, classroom management, school internships and inclusive education practices.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;Polytechnic (Diploma Engineering)&lt;/h3&gt;&lt;p&gt;Practical diploma courses in civil, mechanical, electrical and computer engineering with hands-on workshops and industry tie-ups to boost employability.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;ITI (Multi-trade)&lt;/h3&gt;&lt;p&gt;Short-term vocational trades (electrician, fitter, plumber, welder) focused on skill certificates, job placements and entrepreneurship support for local industry needs.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;B.Tech (Bachelor of Technology)&lt;/h3&gt;&lt;p&gt;Four-year engineering degrees with project-based learning, lab facilities and industry internships in core branches such as CSE, ECE and Mechanical.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;M.Tech (Master of Technology)&lt;/h3&gt;&lt;p&gt;Advanced postgraduate programs emphasizing specialization, research projects and collaboration with industry for technical leadership roles.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;BBA (Bachelor of Business Administration)&lt;/h3&gt;&lt;p&gt;Undergraduate business program covering management fundamentals, entrepreneurship, internships and soft-skills development for corporate readiness.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;MBA (Master of Business Administration)&lt;/h3&gt;&lt;p&gt;Postgraduate management program with specializations, case-based learning and industry projects oriented to leadership and start-up incubation.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;BCA (Bachelor of Computer Applications)&lt;/h3&gt;&lt;p&gt;Computer applications program with programming, databases and practical labs preparing students for IT roles and further studies.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;BA (Bachelor of Arts)&lt;/h3&gt;&lt;p&gt;Undergraduate arts degrees with options in humanities and social sciences, focused on critical thinking and communication skills.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="slide"&gt;&lt;div class="slide-content"&gt;&lt;h3&gt;MA (Master of Arts)&lt;/h3&gt;&lt;p&gt;Postgraduate arts programs with specialization, research orientation and opportunities for teaching and civil services preparation.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="slider-btn next" data-target="coursesSlider" aria-label="Next"&gt;›&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="dots" aria-hidden="true"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;footer class="site-footer"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;&amp;copy; 2025 JVR Trust | All Rights Reserved&lt;/p&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="script.js"&gt;&lt;/script&gt;</p>
 <p class="p1">&lt;/body&gt;</p>
 <p class="p1">&lt;/html&gt;</p>
 </body>
