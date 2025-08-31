@@ -1,6 +1,13 @@
 // Helper: throttle
 function throttle(fn, wait=100){
-  let t=0; return (...args)=>{const now=Date.now(); if(now-t>=wait){t=now; fn(...args);} };
+  let t=0;
+  return (...args)=>{
+    const now = Date.now();
+    if(now - t >= wait){
+      t = now;
+      fn(...args);
+    }
+  };
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -14,47 +21,60 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ====== Counters (once visible) ====== */
-  const counters = document.querySelectorAll(".counter");
-  const runCounters = () => {
-    counters.forEach(counter => {
-      const target = Number(counter.dataset.target || 0);
-      let val = 0;
-      const step = Math.max(1, Math.ceil(target / 160));
-      const tick = () => {
-        val += step;
-        if (val < target) {
-          counter.textContent = val.toLocaleString();
-          requestAnimationFrame(tick);
-        } else {
-          counter.textContent = target.toLocaleString();
-        }
-      };
-      tick();
-    });
-  };
-  const countersSection = document.querySelector(".counters");
-  if (countersSection){
-    let started = false;
-    const onScroll = () => {
-      const top = countersSection.getBoundingClientRect().top;
-      if(!started && top < window.innerHeight - 60){
-        started = true; runCounters(); window.removeEventListener("scroll", onScroll);
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive:true }); onScroll();
-  }
-
   /* ====== Fade-in Observer ====== */
   const faders = document.querySelectorAll(".fade-in");
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add("appear"); io.unobserve(e.target); } });
-  }, { threshold:.25, rootMargin:"0px 0px -80px 0px" });
-  faders.forEach(el => io.observe(el));
+  if (faders.length) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          e.target.classList.add("appear");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold:.25, rootMargin:"0px 0px -80px 0px" });
+    faders.forEach(el => io.observe(el));
+  }
+
+  /* ====== Counters (once visible) ====== */
+  const counters = document.querySelectorAll(".counter");
+  if (counters.length){
+    let started = false;
+    const runCounters = () => {
+      counters.forEach(counter => {
+        const target = Number(counter.dataset.target || 0);
+        let val = 0;
+        const step = Math.max(1, Math.ceil(target / 160));
+        const tick = () => {
+          val += step;
+          if (val < target) {
+            counter.textContent = val.toLocaleString();
+            requestAnimationFrame(tick);
+          } else {
+            counter.textContent = target.toLocaleString();
+          }
+        };
+        tick();
+      });
+    };
+    const countersSection = document.querySelector(".counters");
+    const onScroll = () => {
+      if (!countersSection) return;
+      const top = countersSection.getBoundingClientRect().top;
+      if(!started && top < window.innerHeight - 60){
+        started = true;
+        runCounters();
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive:true });
+    onScroll();
+  }
 
   /* ====== Chart.js (Impact) ====== */
-  const ctx = document.getElementById("impactChart");
-  if (ctx){
+  const drawImpactChart = (ctxId) => {
+    const ctx = document.getElementById(ctxId);
+    if (!ctx) return;
+    if (typeof Chart === "undefined") return;
     new Chart(ctx, {
       type: "bar",
       data: {
@@ -65,11 +85,17 @@ document.addEventListener("DOMContentLoaded", () => {
           { label:"Scholarships", data:[20,50,80,120,160,200], backgroundColor:"rgba(241,196,15,0.7)" }
         ]
       },
-      options: { responsive:true, plugins:{ legend:{ position:"top" }}, scales:{ y:{ beginAtZero:true } } }
+      options: {
+        responsive:true,
+        plugins:{ legend:{ position:"top" } },
+        scales:{ y:{ beginAtZero:true } }
+      }
     });
-  }
+  };
 
-  /* ====== Modern Carousel: scroll-snap + auto + arrows + dots + swipe ====== */
+  drawImpactChart("impactChart");
+
+  /* ====== Carousel: scroll-snap + auto + arrows + dots + swipe ====== */
   const slider = document.getElementById("slider");
   if (slider){
     const slides = Array.from(slider.querySelectorAll(".slide"));
@@ -78,29 +104,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const dotsWrap = document.getElementById("sliderDots");
     let current = 0;
     let timer = null;
-    let width = slider.clientWidth;
+    let width = slider.clientWidth || slider.offsetWidth;
 
-    // Build dots
-    slides.forEach((_, i) => {
-      const b = document.createElement("button");
-      b.setAttribute("role","tab");
-      b.setAttribute("aria-label",`Go to slide ${i+1}`);
-      if (i===0) b.classList.add("active");
-      dotsWrap.appendChild(b);
-      b.addEventListener("click", () => goTo(i, true));
-    });
-    const dots = Array.from(dotsWrap.querySelectorAll("button"));
+    // Build dots if needed
+    let dots = [];
+    if (dotsWrap && slides.length){
+      slides.forEach((_, i) => {
+        const b = document.createElement("button");
+        b.setAttribute("role","tab");
+        b.setAttribute("aria-label",`Go to slide ${i+1}`);
+        if (i===0) b.classList.add("active");
+        dotsWrap.appendChild(b);
+        b.addEventListener("click", () => goTo(i, true));
+      });
+      dots = Array.from(dotsWrap.querySelectorAll("button"));
+    }
 
     // Update UI
     function updateUI(){
       slides.forEach((s,i)=> s.classList.toggle("active", i===current));
-      dots.forEach((d,i)=> d.classList.toggle("active", i===current));
+      if (dots.length) dots.forEach((d,i)=> d.classList.toggle("active", i===current));
     }
 
     // Programmatic scroll
     function goTo(i, user=false){
       current = (i + slides.length) % slides.length;
-      slider.scrollTo({ left: current * width, behavior:"smooth" });
+      const left = current * width;
+      try {
+        slider.scrollTo({ left, behavior:"smooth" });
+      } catch (e) {
+        slider.scrollLeft = left;
+      }
       updateUI();
       if (user) resetAuto();
     }
@@ -111,29 +145,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Resize handling for perfect snap
     const ro = new ResizeObserver(() => {
-      width = slider.clientWidth;
+      width = slider.clientWidth || slider.offsetWidth;
       // re-snap to exact boundary to avoid sub-pixel drift
-      slider.scrollTo({ left: current * width, behavior:"instant" in window ? "instant" : "auto" });
+      try {
+        slider.scrollTo({ left: current * width, behavior:"auto" });
+      } catch (e) {
+        slider.scrollLeft = current * width;
+      }
     });
     ro.observe(slider);
 
+    // Buttons
+    if (prevBtn) prevBtn.addEventListener("click", ()=> goTo(current-1, true));
+    if (nextBtn) nextBtn.addEventListener("click", ()=> goTo(current+1, true));
+
     // Keyboard
-    [prevBtn, nextBtn].forEach(btn => btn && btn.addEventListener("click", () => {
-      goTo(btn === prevBtn ? current-1 : current+1, true);
-    }));
     document.addEventListener("keydown", e => {
-      if (e.key === "ArrowLeft") goTo(current-1, true);
-      if (e.key === "ArrowRight") goTo(current+1, true);
+      if (e.key === "ArrowLeft") { goTo(current-1, true); }
+      if (e.key === "ArrowRight") { goTo(current+1, true); }
     });
 
-    // Drag / Swipe with pointer events (iOS + Android + desktop)
+    // Drag / Swipe with pointer events
     let isDown=false, startX=0, startScroll=0;
     const disableSnap = () => slider.style.scrollSnapType = "none";
     const enableSnap  = () => slider.style.scrollSnapType = "x mandatory";
 
     slider.addEventListener("pointerdown", e => {
-      isDown = true; slider.setPointerCapture(e.pointerId);
-      startX = e.clientX; startScroll = slider.scrollLeft; disableSnap(); clearInterval(timer);
+      isDown = true;
+      slider.setPointerCapture && slider.setPointerCapture(e.pointerId);
+      startX = e.clientX;
+      startScroll = slider.scrollLeft;
+      disableSnap();
+      clearInterval(timer);
     });
     slider.addEventListener("pointermove", e => {
       if (!isDown) return;
@@ -141,18 +184,23 @@ document.addEventListener("DOMContentLoaded", () => {
       slider.scrollLeft = startScroll - dx;
     });
     const onPointerUp = e => {
-      if (!isDown) return; isDown = false; enableSnap();
-      const index = Math.round(slider.scrollLeft / width);
+      if (!isDown) return;
+      isDown = false;
+      enableSnap();
+      const index = Math.round(slider.scrollLeft / (width || 1));
       goTo(index, true);
     };
     slider.addEventListener("pointerup", onPointerUp);
     slider.addEventListener("pointercancel", onPointerUp);
     slider.addEventListener("pointerleave", onPointerUp);
 
-    // Sync active slide when user scrolls inertially
+    // Sync active slide on scroll (throttled)
     slider.addEventListener("scroll", throttle(() => {
-      const index = Math.round(slider.scrollLeft / width);
-      if (index !== current){ current = index; updateUI(); }
+      const index = Math.round(slider.scrollLeft / (width || 1));
+      if (index !== current && index >= 0 && index < slides.length){
+        current = index;
+        updateUI();
+      }
     }, 120), { passive:true });
 
     // Pause on hover (desktop)
@@ -160,6 +208,8 @@ document.addEventListener("DOMContentLoaded", () => {
     slider.addEventListener("mouseleave", () => resetAuto());
 
     // Init
-    updateUI(); startAuto();
+    updateUI();
+    startAuto();
   }
-});
+
+}); // DOMContentLoaded
