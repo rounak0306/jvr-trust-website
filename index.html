@@ -20,8 +20,102 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;JVR Trust - Home&lt;/title&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;link rel="stylesheet" href="style.css" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- Chart.js for impact charts --&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>/* Layout + Alignment Fix */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.container {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>max-width: 1200px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 auto;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 0 2rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>section {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 4rem 1rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>h1, h2, p {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>p {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>max-width: 900px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 auto 1.5rem auto;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>line-height: 1.7;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 1.05rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>/* Hero */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.hero {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>justify-content: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 6rem 1rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: linear-gradient(to right, #4CAF50, #2E7D32);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #fff;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.hero h1 { font-size: 2.2rem; margin-bottom: 1rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.hero p { font-size: 1.15rem; margin-bottom: 1.5rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.btn-primary {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #fff;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #2E7D32;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 0.75rem 1.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 6px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>text-decoration: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: bold;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: inline-block;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>/* Slider */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.slider-container {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>overflow: hidden;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>max-width: 1200px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 auto;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.slide img {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>height: 60vh;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>object-fit: cover;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.slide-caption {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>bottom: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>left: 50%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>transform: translateX(-50%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: rgba(0,0,0,0.6);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #fff;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 0.5rem 1rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 5px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 1rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>/* Counters */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.counter-grid {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>justify-content: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 2rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-top: 2rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.counter-card {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>flex: 1 1 200px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.counter {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 2rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: bold;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #2E7D32;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>/* Mobile */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>@media(max-width:768px){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.hero { padding: 4rem 1rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.hero h1 { font-size: 1.6rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.hero p { font-size: 1rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.slide img { height: 40vh; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></p>
 <p class="p1"><span class="s1">&lt;/head&gt;</span></p>
 <p class="p1"><span class="s1">&lt;body class="home"&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
@@ -42,50 +136,42 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;main&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Hero --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="hero fade-in" aria-label="Hero"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="container hero-inner"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="hero fade-in"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="container"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Empowering Education for a Brighter Tomorrow&lt;/h1&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>At JVR Trust, we are committed to building world-class educational institutions that empower future generations.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>Our vision is grounded in accessibility, affordability, and academic excellence. With initiatives across medicine,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>At JVR Trust, we are committed to building world-class educational institutions that empower future generations.<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>Our vision is grounded in accessibility, affordability, and academic excellence. With initiatives across medicine,<span class="Apple-converted-space"> </span></span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>engineering, law, management, arts, and sciences, we are laying the foundation for a knowledge-driven society.</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="donate.html" class="btn-primary"&gt;Support Us&lt;/a&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Slider (highlights) --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="slider-section fade-in" aria-label="Highlights slider"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Slider --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="slider-section fade-in"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="slider-container" id="slider" aria-live="polite"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="slide active" role="group" aria-label="1 of 4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;img src="images/course-medicine.jpg" alt="Future-ready medical education" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="slide active"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;img src="images/course-medicine.jpg" alt="Medical Education" /&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="slide-caption"&gt;Medicine • Compassion + Science&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="slide" role="group" aria-label="2 of 4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;img src="images/course-engineering.jpg" alt="Engineering labs and innovation" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="slide"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;img src="images/course-engineering.jpg" alt="Engineering Innovation" /&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="slide-caption"&gt;Engineering • Build Tomorrow&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="slide" role="group" aria-label="3 of 4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;img src="images/course-law.jpg" alt="Law and justice education" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="slide"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;img src="images/course-law.jpg" alt="Law &amp; Justice" /&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="slide-caption"&gt;Law • Ethics &amp;amp; Justice&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="slide" role="group" aria-label="4 of 4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;img src="images/course-management.jpg" alt="Management and leadership" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="slide"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;img src="images/course-management.jpg" alt="Management Leadership" /&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="slide-caption"&gt;Management • Lead with Purpose&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;!-- Arrows --&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="slider-arrow prev" id="prevBtn" aria-label="Previous slide"&gt;❮&lt;/button&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button class="slider-arrow next" id="nextBtn" aria-label="Next slide"&gt;❯&lt;/button&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;!-- Dots --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="slider-dots" id="sliderDots" role="tablist" aria-label="Slider pagination"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="slider-dots" id="sliderDots"&gt;&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Highlights --&gt;</span></p>
@@ -124,11 +210,10 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Impact + Chart --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Impact --&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="section-bg-panel counters fade-in"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="container"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Impact Metrics&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="counter-grid"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="counter-card"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="counter" data-target="10"&gt;0&lt;/div&gt;</span></p>
@@ -143,8 +228,7 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;Scholarships Every Year&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;canvas id="impactChart" width="800" height="320" aria-label="Growth chart"&gt;&lt;/canvas&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;canvas id="impactChart" width="800" height="320"&gt;&lt;/canvas&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
@@ -160,16 +244,14 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="donate.html" class="btn-primary"&gt;Donate Now&lt;/a&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;footer class="site-footer"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;&amp;copy; 2025 JVR Trust • All Rights Reserved&lt;/p&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/footer&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- Floating actions --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;a href="https://wa.me/917761894715" class="fab whatsapp" target="_blank" aria-label="WhatsApp"&gt;💬&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;a href="tel:+917761894715" class="fab call" aria-label="Call"&gt;📞&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;a href="https://wa.me/917761894715" class="fab whatsapp" target="_blank"&gt;💬&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;a href="tel:+917761894715" class="fab call"&gt;📞&lt;/a&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script src="script.js"&gt;&lt;/script&gt;</span></p>
 <p class="p1"><span class="s1">&lt;/body&gt;</span></p>

@@ -1,215 +1,163 @@
-// Helper: throttle
-function throttle(fn, wait=100){
-  let t=0;
-  return (...args)=>{
-    const now = Date.now();
-    if(now - t >= wait){
-      t = now;
-      fn(...args);
-    }
-  };
-}
+// ========================
+// Slider Initialization
+// ========================
+function initSlider(containerId, prevBtnId, nextBtnId, dotsId, interval = 5000) {
+  const slider = document.getElementById(containerId);
+  if (!slider) return;
 
-document.addEventListener("DOMContentLoaded", () => {
-  /* ====== Mobile Nav ====== */
-  const toggle = document.querySelector(".nav-toggle");
-  const nav = document.getElementById("mainNav");
-  if (toggle && nav){
-    toggle.addEventListener("click", () => {
-      const open = nav.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  const slides = slider.querySelectorAll(".slide");
+  const prevBtn = document.getElementById(prevBtnId);
+  const nextBtn = document.getElementById(nextBtnId);
+  const dotsContainer = document.getElementById(dotsId);
+
+  let currentIndex = 0;
+  let autoSlide;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+
+    if (dotsContainer) {
+      const dots = dotsContainer.querySelectorAll(".dot");
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    }
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    const newIndex = (currentIndex + 1) % slides.length;
+    showSlide(newIndex);
+  }
+
+  function prevSlide() {
+    const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(newIndex);
+  }
+
+  // Setup navigation
+  if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+  if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+
+  // Setup dots
+  if (dotsContainer) {
+    dotsContainer.innerHTML = "";
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.classList.add("dot");
+      if (i === 0) dot.classList.add("active");
+      dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+      dot.addEventListener("click", () => showSlide(i));
+      dotsContainer.appendChild(dot);
     });
   }
 
-  /* ====== Fade-in Observer ====== */
-  const faders = document.querySelectorAll(".fade-in");
-  if (faders.length) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting){
-          e.target.classList.add("appear");
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold:.25, rootMargin:"0px 0px -80px 0px" });
-    faders.forEach(el => io.observe(el));
+  // Auto slide
+  function startAutoSlide() {
+    autoSlide = setInterval(nextSlide, interval);
+  }
+  function stopAutoSlide() {
+    clearInterval(autoSlide);
   }
 
-  /* ====== Counters (once visible) ====== */
+  slider.addEventListener("mouseenter", stopAutoSlide);
+  slider.addEventListener("mouseleave", startAutoSlide);
+
+  showSlide(0);
+  startAutoSlide();
+}
+
+// Initialize sliders
+document.addEventListener("DOMContentLoaded", () => {
+  initSlider("slider", "prevBtn", "nextBtn", "sliderDots", 4000);
+  initSlider("trusteeSlider", "trusteePrevBtn", "trusteeNextBtn", "trusteeSliderDots", 5000);
+  initSlider("courseSlider", "coursePrevBtn", "courseNextBtn", "courseSliderDots", 5000);
+});
+
+// ========================
+// Counter Animation
+// ========================
+function animateCounters() {
   const counters = document.querySelectorAll(".counter");
-  if (counters.length){
-    let started = false;
-    const runCounters = () => {
-      counters.forEach(counter => {
-        const target = Number(counter.dataset.target || 0);
-        let val = 0;
-        const step = Math.max(1, Math.ceil(target / 160));
-        const tick = () => {
-          val += step;
-          if (val < target) {
-            counter.textContent = val.toLocaleString();
-            requestAnimationFrame(tick);
-          } else {
-            counter.textContent = target.toLocaleString();
-          }
-        };
-        tick();
-      });
-    };
-    const countersSection = document.querySelector(".counters");
-    const onScroll = () => {
-      if (!countersSection) return;
-      const top = countersSection.getBoundingClientRect().top;
-      if(!started && top < window.innerHeight - 60){
-        started = true;
-        runCounters();
-        window.removeEventListener("scroll", onScroll);
+  counters.forEach(counter => {
+    const target = +counter.getAttribute("data-target");
+    const updateCount = () => {
+      const current = +counter.innerText;
+      const increment = Math.ceil(target / 200);
+      if (current < target) {
+        counter.innerText = current + increment;
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target;
       }
     };
-    window.addEventListener("scroll", onScroll, { passive:true });
-    onScroll();
+    updateCount();
+  });
+}
+window.addEventListener("scroll", () => {
+  const countersSection = document.querySelector(".counters");
+  if (countersSection) {
+    const rect = countersSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight && !countersSection.classList.contains("animated")) {
+      countersSection.classList.add("animated");
+      animateCounters();
+    }
   }
+});
 
-  /* ====== Chart.js (Impact) ====== */
-  const drawImpactChart = (ctxId) => {
-    const ctx = document.getElementById(ctxId);
-    if (!ctx) return;
-    if (typeof Chart === "undefined") return;
+// ========================
+// Chart.js Impact Chart
+// ========================
+document.addEventListener("DOMContentLoaded", () => {
+  const ctx = document.getElementById("impactChart");
+  if (ctx) {
     new Chart(ctx, {
       type: "bar",
       data: {
-        labels: ["2025","2026","2027","2028","2029","2030"],
-        datasets: [
-          { label:"Colleges Planned", data:[2,4,6,8,9,10], backgroundColor:"rgba(46,204,113,0.7)" },
-          { label:"Students Benefited", data:[500,1200,2000,3000,4000,5000], backgroundColor:"rgba(52,152,219,0.7)" },
-          { label:"Scholarships", data:[20,50,80,120,160,200], backgroundColor:"rgba(241,196,15,0.7)" }
-        ]
+        labels: ["2023", "2024", "2025", "2026", "2027"],
+        datasets: [{
+          label: "Students Benefited",
+          data: [800, 1500, 2500, 3500, 5000],
+          backgroundColor: "#4CAF50"
+        }]
       },
       options: {
-        responsive:true,
-        plugins:{ legend:{ position:"top" } },
-        scales:{ y:{ beginAtZero:true } }
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: { beginAtZero: true }
+        }
       }
     });
-  };
-
-  drawImpactChart("impactChart");
-
-  /* ====== Carousel: scroll-snap + auto + arrows + dots + swipe ====== */
-  const slider = document.getElementById("slider");
-  if (slider){
-    const slides = Array.from(slider.querySelectorAll(".slide"));
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const dotsWrap = document.getElementById("sliderDots");
-    let current = 0;
-    let timer = null;
-    let width = slider.clientWidth || slider.offsetWidth;
-
-    // Build dots if needed
-    let dots = [];
-    if (dotsWrap && slides.length){
-      slides.forEach((_, i) => {
-        const b = document.createElement("button");
-        b.setAttribute("role","tab");
-        b.setAttribute("aria-label",`Go to slide ${i+1}`);
-        if (i===0) b.classList.add("active");
-        dotsWrap.appendChild(b);
-        b.addEventListener("click", () => goTo(i, true));
-      });
-      dots = Array.from(dotsWrap.querySelectorAll("button"));
-    }
-
-    // Update UI
-    function updateUI(){
-      slides.forEach((s,i)=> s.classList.toggle("active", i===current));
-      if (dots.length) dots.forEach((d,i)=> d.classList.toggle("active", i===current));
-    }
-
-    // Programmatic scroll
-    function goTo(i, user=false){
-      current = (i + slides.length) % slides.length;
-      const left = current * width;
-      try {
-        slider.scrollTo({ left, behavior:"smooth" });
-      } catch (e) {
-        slider.scrollLeft = left;
-      }
-      updateUI();
-      if (user) resetAuto();
-    }
-
-    // Autoslide
-    function startAuto(){ timer = setInterval(()=> goTo(current+1, false), 5000); }
-    function resetAuto(){ clearInterval(timer); startAuto(); }
-
-    // Resize handling for perfect snap
-    const ro = new ResizeObserver(() => {
-      width = slider.clientWidth || slider.offsetWidth;
-      // re-snap to exact boundary to avoid sub-pixel drift
-      try {
-        slider.scrollTo({ left: current * width, behavior:"auto" });
-      } catch (e) {
-        slider.scrollLeft = current * width;
-      }
-    });
-    ro.observe(slider);
-
-    // Buttons
-    if (prevBtn) prevBtn.addEventListener("click", ()=> goTo(current-1, true));
-    if (nextBtn) nextBtn.addEventListener("click", ()=> goTo(current+1, true));
-
-    // Keyboard
-    document.addEventListener("keydown", e => {
-      if (e.key === "ArrowLeft") { goTo(current-1, true); }
-      if (e.key === "ArrowRight") { goTo(current+1, true); }
-    });
-
-    // Drag / Swipe with pointer events
-    let isDown=false, startX=0, startScroll=0;
-    const disableSnap = () => slider.style.scrollSnapType = "none";
-    const enableSnap  = () => slider.style.scrollSnapType = "x mandatory";
-
-    slider.addEventListener("pointerdown", e => {
-      isDown = true;
-      slider.setPointerCapture && slider.setPointerCapture(e.pointerId);
-      startX = e.clientX;
-      startScroll = slider.scrollLeft;
-      disableSnap();
-      clearInterval(timer);
-    });
-    slider.addEventListener("pointermove", e => {
-      if (!isDown) return;
-      const dx = e.clientX - startX;
-      slider.scrollLeft = startScroll - dx;
-    });
-    const onPointerUp = e => {
-      if (!isDown) return;
-      isDown = false;
-      enableSnap();
-      const index = Math.round(slider.scrollLeft / (width || 1));
-      goTo(index, true);
-    };
-    slider.addEventListener("pointerup", onPointerUp);
-    slider.addEventListener("pointercancel", onPointerUp);
-    slider.addEventListener("pointerleave", onPointerUp);
-
-    // Sync active slide on scroll (throttled)
-    slider.addEventListener("scroll", throttle(() => {
-      const index = Math.round(slider.scrollLeft / (width || 1));
-      if (index !== current && index >= 0 && index < slides.length){
-        current = index;
-        updateUI();
-      }
-    }, 120), { passive:true });
-
-    // Pause on hover (desktop)
-    slider.addEventListener("mouseenter", () => clearInterval(timer));
-    slider.addEventListener("mouseleave", () => resetAuto());
-
-    // Init
-    updateUI();
-    startAuto();
   }
+});
 
-}); // DOMContentLoaded
+// ========================
+// Fade-in Animation
+// ========================
+function handleScrollAnimations() {
+  const elements = document.querySelectorAll(".fade-in");
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50) {
+      el.classList.add("visible");
+    }
+  });
+}
+window.addEventListener("scroll", handleScrollAnimations);
+window.addEventListener("load", handleScrollAnimations);
+
+// ========================
+// Mobile Navigation
+// ========================
+const navToggle = document.querySelector(".nav-toggle");
+const mainNav = document.getElementById("mainNav");
+if (navToggle && mainNav) {
+  navToggle.addEventListener("click", () => {
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", !expanded);
+    mainNav.classList.toggle("open");
+  });
+}
